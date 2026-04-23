@@ -1,0 +1,10 @@
+{
+  "name": "Bujji AI",
+  "description": "A witty, sassy, and emotionally responsive voice-to-voice AI assistant with a distinct personality.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "multimodal_live"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Stores user preferences and key memories for Bujji to remember.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The unique ID of the user." },
+        "displayName": { "type": "string", "description": "The name the user wants to be called." },
+        "preferences": {
+          "type": "object",
+          "description": "User specific settings for Bujji's behavior.",
+          "properties": {
+            "sassyLevel": { "type": "number", "description": "How sassy Bujji should be (1-10)." },
+            "theme": { "type": "string", "description": "UI theme preference." }
+          }
+        },
+        "memories": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "A list of facts Bujji has learned about the user."
+        },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid"]
+    },
+    "Conversation": {
+      "title": "Conversation",
+      "description": "Stores a summary or snippet of a past conversation.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "The user ID." },
+        "summary": { "type": "string", "description": "A text summary of the conversation." },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "summary", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": {
+      "schema": "User",
+      "description": "User profile and memory storage."
+    },
+    "/users/{uid}/conversations/{convId}": {
+      "schema": "Conversation",
+      "description": "History of past interactions."
+    }
+  }
+}
